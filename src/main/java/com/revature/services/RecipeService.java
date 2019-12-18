@@ -27,12 +27,7 @@ public class RecipeService {
 		
 		return rr.getRecipesByUserId(user_id);
 	}
-	
-	public List<Recipe> getFavoriteRecipesByUserId(int user_id) {
 		
-		return rr.getFavoriteRecipesByUserId(user_id);
-	}
-	
 	public int addRecipe(Recipe r) {
 		
 		return rr.addRecipe(r);

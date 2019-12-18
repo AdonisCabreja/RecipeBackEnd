@@ -20,5 +20,6 @@
 		
 		<mapping class="com.revature.beans.User"/>
 		<mapping class="com.revature.beans.Recipe"/>
+		<mapping class="com.revature.beans.RecipeOfMonth"/>
 	</session-factory>
 </hibernate-configuration>

@@ -24,7 +24,6 @@ public class Recipe implements Serializable {
 	private int id;
 	private int apiId;
 	private int user_id;
-	private boolean isFavorite;
 	
 	public Recipe() {
 		super();
@@ -34,13 +33,12 @@ public class Recipe implements Serializable {
 		super();
 		this.id = id;
 	}
-	
-	public Recipe(int id, int apiId, int user_id, boolean isFavorite) {
+
+	public Recipe(int id, int apiId, int user_id) {
 		super();
 		this.id = id;
 		this.apiId = apiId;
 		this.user_id = user_id;
-		this.isFavorite = isFavorite;
 	}
 
 	public int getId() {
@@ -67,21 +65,12 @@ public class Recipe implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public boolean isFavorite() {
-		return isFavorite;
-	}
-
-	public void setFavorite(boolean isFavorite) {
-		this.isFavorite = isFavorite;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + apiId;
 		result = prime * result + id;
-		result = prime * result + (isFavorite ? 1231 : 1237);
 		result = prime * result + user_id;
 		return result;
 	}
@@ -99,8 +88,6 @@ public class Recipe implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
-		if (isFavorite != other.isFavorite)
-			return false;
 		if (user_id != other.user_id)
 			return false;
 		return true;
@@ -108,7 +95,7 @@ public class Recipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", apiId=" + apiId + ", user_id=" + user_id + ", isFavorite=" + isFavorite + "]";
+		return "Recipe [id=" + id + ", apiId=" + apiId + ", user_id=" + user_id + "]";
 	}
 
 }

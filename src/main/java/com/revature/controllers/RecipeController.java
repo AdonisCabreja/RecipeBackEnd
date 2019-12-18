@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Recipe;
@@ -33,13 +32,7 @@ public class RecipeController {
 		
 		return rs.getRecipeByUserId(user_id);
 	}
-	
-	@GetMapping("/favorites/userID={user_id}")
-	public List<Recipe> getFavoriteRecipesByUserId(@PathVariable("user_id")int user_id) {
 		
-		return rs.getFavoriteRecipesByUserId(user_id);
-	}
-	
 	@PostMapping
 	public int addRecipe(@RequestBody Recipe r) {
 		

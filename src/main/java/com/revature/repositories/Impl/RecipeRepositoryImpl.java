@@ -1,4 +1,4 @@
-package com.revature.repositories;
+package com.revature.repositories.Impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Recipe;
+import com.revature.repositories.RecipeRepository;
 import com.revature.util.HibernateUtil;
 
 @Repository
@@ -21,7 +22,10 @@ public class RecipeRepositoryImpl implements RecipeRepository {
 			String hql = "from Recipe";
 			Query<Recipe> q = s.createQuery(hql, Recipe.class);
 			List<Recipe> recipes = q.getResultList();
-			return recipes;
+			if (recipes.size() != 0) {
+				return recipes;
+			}
+			return null;
 		}
 	}
 	
@@ -34,20 +38,10 @@ public class RecipeRepositoryImpl implements RecipeRepository {
 			Query<Recipe> q = s.createQuery(hql, Recipe.class);
 			q.setParameter("idVar", user_id);
 			List<Recipe> r = q.getResultList();
-			return r;
-		}
-	}
-
-	@Override
-	public List<Recipe> getFavoriteRecipesByUserId(int user_id) {
-		
-		try(Session s = HibernateUtil.getSession()) {
-			
-			String hql = "from Recipe where user_id = :idVar and isFavorite = true";
-			Query<Recipe> q = s.createQuery(hql, Recipe.class);
-			q.setParameter("idVar", user_id);
-			List<Recipe> r = q.getResultList();
-			return r;
+			if (r.size() != 0) {
+				return r;
+			}
+			return null;
 		}
 	}
 

@@ -1,4 +1,4 @@
-package com.revature.repositories;
+package com.revature.repositories.Impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.revature.beans.User;
+import com.revature.repositories.UserRepository;
 import com.revature.util.HibernateUtil;
 
 @Repository
@@ -34,7 +35,26 @@ public class UserRepositoryImpl implements UserRepository {
 			String hql = "from User";
 			Query<User> q = s.createQuery(hql, User.class);
 			List<User> users = q.getResultList();
-			return users;
+			if (users.size() != 0) {
+				return users;
+			}
+			return null;
+		}
+	}
+	
+	@Override
+	public User getUserByUsername(String username) {
+		
+		try(Session s = HibernateUtil.getSession()) {
+			
+			String hql = "from User where user_name = :usernameVar";
+			Query<User> q = s.createQuery(hql, User.class);
+			q.setParameter("usernameVar", username);
+			List<User> u = q.getResultList();
+			if (u.get(0) != null) {
+				return u.get(0);
+			}
+			return null;
 		}
 	}
 	
@@ -43,12 +63,15 @@ public class UserRepositoryImpl implements UserRepository {
 		
 		try(Session s = HibernateUtil.getSession()) {
 			
-			String hql = "from User where username = :usernameVar and password = :passwordVar";
+			String hql = "from User where user_name = :usernameVar and pass_word = :passwordVar";
 			Query<User> q = s.createQuery(hql, User.class);
 			q.setParameter("usernameVar", username);
 			q.setParameter("passwordVar", password);
 			List<User> u = q.getResultList();
-			return u.get(0);
+			if (u.size() != 0) {
+				return u.get(0);
+			}
+			return null;
 		}
 	}
 

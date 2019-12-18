@@ -28,6 +28,11 @@ public class UserService {
 		return ur.getUsers();
 	}
 	
+	public User getUserByUsername(String username) {
+		
+		return ur.getUserByUsername(username);
+	}
+	
 	public User getUserByUsernameAndPassword(String username, String password) {
 		
 		return ur.getUserByUsernameAndPassword(username, password);

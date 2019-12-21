@@ -3,6 +3,7 @@ package com.revature.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,8 @@ import com.revature.beans.RecipeOfMonth;
 import com.revature.services.RecipeOfMonthService;
 
 @RestController
-@RequestMapping("/recipe-of-month")
+@RequestMapping("/recipes-of-month")
+@CrossOrigin
 public class RecipeOfMonthController {
 	
 	@Autowired
@@ -25,9 +27,9 @@ public class RecipeOfMonthController {
 	}
 	
 	@GetMapping("/{month}")
-	public RecipeOfMonth getRecipeByMonth(@PathVariable("month")String month) {
+	public List<RecipeOfMonth> getRecipesByMonth(@PathVariable("month")int month) {
 		
-		return rms.getRecipeByMonth(month.toLowerCase());
+		return rms.getRecipesByMonth(month);
 	}
 	
 }

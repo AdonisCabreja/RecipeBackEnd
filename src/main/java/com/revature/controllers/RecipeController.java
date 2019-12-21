@@ -3,6 +3,8 @@ package com.revature.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import com.revature.services.RecipeService;
 
 @RestController
 @RequestMapping("/recipes")
+@CrossOrigin
 public class RecipeController {
 
 	@Autowired
@@ -27,16 +30,16 @@ public class RecipeController {
 		return rs.getRecipes();
 	}
 	
-	@GetMapping("/userID={user_id}")
+	@GetMapping("/users/{user_id}")
 	public List<Recipe> getRecipesByUserId(@PathVariable("user_id")int user_id) {
 		
 		return rs.getRecipeByUserId(user_id);
 	}
 		
 	@PostMapping
-	public int addRecipe(@RequestBody Recipe r) {
+	public int addRecipe(@RequestBody List<Recipe> recipes) {
 		
-		return rs.addRecipe(r);
+		return rs.addRecipes(recipes);
 	}
 	
 	@DeleteMapping("/{recipe_id}")

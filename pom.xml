@@ -8,9 +8,13 @@
   	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		
+		<sonar.projectKey>19nov-java-sps_RecipeBackEnd</sonar.projectKey>
+  		<sonar.organization>19nov-java-sps</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  		<sonar.login>11944ef735cf6c0371441767dff624a79b4898bb</sonar.login>
 	</properties>
-
-
+	
 	<dependencies>
 	
 		<dependency>
@@ -65,6 +69,19 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina</artifactId>
 			<version>9.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.23.4</version>
+			<scope>test</scope>
 		</dependency>
 		
 	</dependencies>

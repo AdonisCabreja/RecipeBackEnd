@@ -23,9 +23,9 @@ public class RecipeOfMonthService {
 		return rmr.getRecipesOfMonth();
 	}
 	
-	public RecipeOfMonth getRecipeByMonth(String month) {
+	public List<RecipeOfMonth> getRecipesByMonth(int month) {
 		
-		return rmr.getRecipeByMonth(month);
+		return rmr.getRecipesByMonth(month);
 	}
 	
 	
